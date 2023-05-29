@@ -35,6 +35,16 @@ const getPartyById = async (id) => {
 // delete party
 const deleteParty = async (id) => {
   // your code here
+  try {
+    const requestOptions = {
+      method: "DELETE",
+    };
+    const response = await fetch(`${PARTIES_API_URL}/${id}`, requestOptions);
+    const party = await response.json();
+    return party;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 // render a single party by id
@@ -58,13 +68,15 @@ const renderSinglePartyById = async (id) => {
 
     // create new HTML element to display party details
     const partyDetailsElement = document.createElement("div");
-    partyDetailsElement.classList.add("party-details");
+    partyDetailsElement.classList.add("party");
     partyDetailsElement.innerHTML = `
             <h2> <strong> Party Name: </strong> ${party.name}</h2>
+            <p> <strong> Party ID: </strong>${party.id}</p>
             <p> <strong> Location: </strong>${party.location}</p>
-            <p> <strong> Description: </strong> ${party.description}</p>
             <p> <strong> Date: </strong> ${party.date}</p>
             <p> <strong> Time: </strong> ${party.time}</p>
+            <p> <strong> Description: </strong> ${party.description}</p>
+            
             <h3> <em> Guests: </em></h3>
             <ul>
             ${guests
@@ -83,7 +95,6 @@ const renderSinglePartyById = async (id) => {
 
             <button class="close-button">Close</button>
         `;
-    partyContainer.style.display = "block";
     // hide party list container
     partyListContainer.style.display = "none";
 
@@ -93,14 +104,21 @@ const renderSinglePartyById = async (id) => {
     const closeButton = partyDetailsElement.querySelector(".close-button");
     closeButton.addEventListener("click", () => {
       partyDetailsElement.remove();
-      init();
-      partyListContainer.style.display = "block";
+      partyListContainer.style.display = "flex";
     });
   } catch (error) {
     console.error(error);
   }
 };
 
+const getRandomColor = () => {
+  var letters = "0123456789ABCDEF";
+  var color = "#";
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
 // render all parties
 const renderParties = async (parties) => {
   try {
@@ -108,12 +126,14 @@ const renderParties = async (parties) => {
     parties.forEach((party) => {
       const partyElement = document.createElement("div");
       partyElement.classList.add("party");
+      partyElement.style.backgroundcolor = getRandomColo();
       partyElement.innerHTML = `
       <h2> <strong> Party Name: </strong> ${party.name}</h2>
       <p> <strong> Location: </strong>${party.location}</p>
-      <p> <strong> Description: </strong> ${party.description}</p>
       <p> <strong> Date: </strong> ${party.date}</p>
       <p> <strong> Time: </strong> ${party.time}</p>
+      <p> <strong> Description: </strong> ${party.description}</p>
+     
                 <button class="details-button" data-id="${party.id}">See Details</button>
                 <button class="delete-button" data-id="${party.id}">Delete</button>
             `;
@@ -132,6 +152,10 @@ const renderParties = async (parties) => {
       const deleteButton = partyElement.querySelector(".delete-button");
       deleteButton.addEventListener("click", async (event) => {
         // your code here
+        const partyId = event.target.dataset.id;
+        deleteParty(partyId);
+
+        event.target.closest("div.party").remove();
       });
     });
   } catch (error) {

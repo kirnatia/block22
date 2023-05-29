@@ -1,5 +1,19 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: rgb(145, 134, 155);
+}
+
+h1 {
+  margin: 0.5rem;
+  font-size: 3em;
+  justify-content: center;
+  border: 5px dotted black;
+  text-align: center;
+}
+div#party-list-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
