@@ -113,7 +113,7 @@ const renderSinglePartyById = async (id) => {
 
 const getRandomColor = () => {
   var letters = "0123456789ABCDEF";
-  var color = "#";
+  var color = "##";
   for (var i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
@@ -126,7 +126,7 @@ const renderParties = async (parties) => {
     parties.forEach((party) => {
       const partyElement = document.createElement("div");
       partyElement.classList.add("party");
-      partyElement.style.backgroundcolor = getRandomColo();
+      partyElement.style.backgroundcolor = getRandomColor();
       partyElement.innerHTML = `
       <h2> <strong> Party Name: </strong> ${party.name}</h2>
       <p> <strong> Location: </strong>${party.location}</p>
