@@ -7,9 +7,9 @@
 
 h1 {
   margin: 0.5rem;
-  font-size: 3em;
+  font-size: 28px;
   justify-content: center;
-  border: 5px dotted black;
+  border: 5px dotted red;
   text-align: center;
 }
 div#party-list-container {
