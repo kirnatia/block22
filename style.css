@@ -29,8 +29,8 @@ h1::after {
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background-color:#ca1167;
- }
+  background-color: #ca1167;
+}
 
 @keyframes mymove {
   from {
