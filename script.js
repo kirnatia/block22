@@ -6,12 +6,12 @@ const PARTIES_API_URL =
   "http://fsa-async-await.herokuapp.com/api/workshop/parties";
 const GUESTS_API_URL =
   "http://fsa-async-await.herokuapp.com/api/workshop/guests";
-const RSVPS_API_URL =
-  "http://fsa-async-await.herokuapp.com/api/workshop/rsvps";
-const GIFTS_API_URL =
-  "http://fsa-async-await.herokuapp.com/api/workshop/gifts";
+const RSVPS_API_URL = "http://fsa-async-await.herokuapp.com/api/workshop/rsvps";
+const GIFTS_API_URL = "http://fsa-async-await.herokuapp.com/api/workshop/gifts";
 
-// get all parties
+// Render All Parties
+// Fetches data and renders all of the parties in the browser.Can see all parties posted to the database.
+
 const getAllParties = async () => {
   try {
     const response = await fetch(PARTIES_API_URL);
@@ -48,25 +48,15 @@ const deleteParty = async (id) => {
   }
 };
 
-// Helper function to format the date as "Month/Day/Year"
-const formatDate = (dateString) => {
-  const date = new Date(dateString);
-  const month = date.getMonth() + 1; // months are zero-based indexed, so add 1
-  const day = date.getDate();
-  const year = date.getFullYear();
-  return `${month}/${day}/${year}`;
-};
-
-// Helper function to generate random pastel colors
+// function to generate random pastel colors
 const getRandomColor = () => {
-  const min = 150; // Minimum RGB value for pastel colors
-  const max = 256; // Maximum RGB value for pastel colors
+  const min = 150;
+  const max = 256;
   const red = Math.floor(Math.random() * (max - min) + min);
   const green = Math.floor(Math.random() * (max - min) + min);
   const blue = Math.floor(Math.random() * (max - min) + min);
   return `rgb(${red}, ${green}, ${blue})`;
 };
-
 
 // render a single party by id
 const renderSinglePartyById = async (id, backgroundColor) => {
@@ -94,8 +84,7 @@ const renderSinglePartyById = async (id, backgroundColor) => {
       <h3><em>Guests:</em></h3>
       <ul>
         ${guests
-          .
-          map(
+          .map(
             (guest, index) => `
               <li>
                 <div>${guest.name}</div>
