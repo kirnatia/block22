@@ -1,19 +1,92 @@
 * {
-  padding: 0;
+  padding: 5px;
   margin: 0;
   box-sizing: border-box;
-  background-color: rgb(145, 134, 155);
+  background-color: #c4e4cef6;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h1 {
-  margin: 0.5rem;
-  font-size: 28px;
-  justify-content: center;
-  border: 5px dotted red;
+  font-size: 48px;
+  font-weight: bold;
+  color: #333;
   text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background: rgb(201, 151, 151);
+  animation: mymove 8s infinite;
 }
-div#party-list-container {
+
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color:#ca1167;
+ }
+
+@keyframes mymove {
+  from {
+    background-color: #da9dda;
+  }
+  to {
+    background-color: #86c6da;
+  }
+  to {
+    background-color: #e795bc;
+  }
+}
+
+/* Container for party logs */
+#party-list-container {
   display: flex;
-  justify-content: space-evenly;
   flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.party {
+  width: calc(50% - 20px);
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Button styles */
+.delete-button {
+  background-color: hsla(0, 51%, 71%, 0.76);
+  color: #fff;
+  font-weight: bold;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.close-button {
+  margin-right: 10px;
+  background-color: rgb(197, 78, 152);
+  border-radius: 25px;
+}
+
+.details-button {
+  background-color: rgb(136, 235, 141);
+  font-style: italic;
+  font-weight: 600;
+  color: #0a0a0a;
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+/* Adjust styles for smaller screens */
+@media (max-width: 768px) {
+  .party {
+    width: 100%;
+  }
 }
