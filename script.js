@@ -3,11 +3,11 @@ const partyListContainer = document.querySelector("#party-list-container");
 const partyContainer = document.querySelector("#party-container");
 
 const PARTIES_API_URL =
-  "https://fsa-async-await.herokuapp.com/api/workshop/parties";
+  "http://fsa-async-await.herokuapp.com/api/workshop/parties";
 const GUESTS_API_URL =
-  "https://fsa-async-await.herokuapp.com/api/workshop/guests";
-const RSVPS_API_URL = "https://fsa-async-await.herokuapp.com/api/workshop/rsvps";
-const GIFTS_API_URL = "https://fsa-async-await.herokuapp.com/api/workshop/gifts";
+  "http://fsa-async-await.herokuapp.com/api/workshop/guests";
+const RSVPS_API_URL = "http://fsa-async-await.herokuapp.com/api/workshop/rsvps";
+const GIFTS_API_URL = "http://fsa-async-await.herokuapp.com/api/workshop/gifts";
 
 // Render All Parties
 // Fetches data and renders all of the parties in the browser.Can see all parties posted to the database.
